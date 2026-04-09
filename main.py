@@ -53,10 +53,12 @@ def get_vector_store():
 # We import these AFTER defining get_vector_store to prevent circular imports.
 from router.ingest import router as ingest_router
 from router.generate_lesson_plan import router as generate_router
+from router.generate_academic_plan import router as academic_router
 
 # Register the routes with the main app
 app.include_router(ingest_router)
 app.include_router(generate_router)
+app.include_router(academic_router)
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

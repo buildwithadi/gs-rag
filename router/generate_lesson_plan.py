@@ -69,8 +69,9 @@ async def generate_lesson_plan(
                 }
             }
         )
-
-        docs = retriever.invoke(f"Extract key concepts for {chapter_name}")
+        
+        formatted_query = f"query: key concepts and learning objectives for {chapter_name} in {subject}"
+        docs = retriever.invoke(formatted_query)
         context_text = "\n\n".join([doc.page_content for doc in docs])
 
         if not context_text:
